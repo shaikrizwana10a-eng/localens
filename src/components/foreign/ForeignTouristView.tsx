@@ -25,7 +25,7 @@ export const ForeignTouristView: React.FC = () => {
         <div className="space-y-1">
           <h4 className="font-bold text-white text-sm">Safety Information Notice</h4>
           <p className="text-stone-300 leading-relaxed">
-            LOKAL provides safety-oriented community information and transport guidance. It does not replace police, emergency services, embassies, or professional security.
+            LOCAL provides safety-oriented community information and transport guidance. It does not replace police, emergency services, embassies, or professional security.
           </p>
         </div>
       </div>

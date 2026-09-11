@@ -205,7 +205,7 @@ export const DestinationView: React.FC<DestinationViewProps> = ({
                       activeTab === 'hidden' ? 'bg-amber-800 text-white' : 'bg-[#FAF9F6] text-stone-600 hover:bg-stone-200'
                     }`}
                   >
-                    Gems ✨
+                    Gems <Sparkles className="w-3.5 h-3.5 ml-1 inline text-amber-500" />
                   </button>
                 </div>
               </div>

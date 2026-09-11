@@ -8,6 +8,7 @@ import { DEMO_VIDEO_REVIEWS } from './data/videoReviews';
 import { DEMO_MISSIONS, DEMO_VERIFICATION_TASKS } from './data/missions';
 import { DEMO_BUSINESS_ANALYTICS } from './data/businessData';
 
+import { LocalKnowledgeProvider } from './context/LocalKnowledgeContext';
 import { Header } from './components/common/Header';
 import { Footer } from './components/common/Footer';
 import { HomeView } from './components/home/HomeView';
@@ -19,12 +20,15 @@ import { FoodExplorerView } from './components/food/FoodExplorerView';
 import { VideoReviewsView } from './components/video/VideoReviewsView';
 import { MissionsView } from './components/contribution/MissionsView';
 import { VerificationView } from './components/verification/VerificationView';
+import { VerificationWorkflowView } from './components/verification/VerificationWorkflowView';
 import { ContributorDashboardView } from './components/contributor/ContributorDashboardView';
 import { BusinessDashboardView } from './components/business/BusinessDashboardView';
 import { ForeignTouristView } from './components/foreign/ForeignTouristView';
 import { UserProfileView } from './components/profile/UserProfileView';
+import { LocalKnowledgeExplorer } from './components/knowledge/LocalKnowledgeExplorer';
+import { ShareKnowledgeForm } from './components/knowledge/ShareKnowledgeForm';
 
-export function App() {
+export function AppContent() {
   const [currentView, setCurrentView] = useState<string>('home');
   const [userRole, setUserRole] = useState<UserRole>('tourist');
   const [selectedDestId, setSelectedDestId] = useState<string>('tirupati');
@@ -70,6 +74,22 @@ export function App() {
             onNavigate={setCurrentView}
             userRole={userRole}
           />
+        )}
+
+        {currentView === 'explore-knowledge' && (
+          <LocalKnowledgeExplorer
+            onNavigateToShare={() => setCurrentView('share-knowledge')}
+          />
+        )}
+
+        {currentView === 'share-knowledge' && (
+          <ShareKnowledgeForm
+            onNavigateToExplore={() => setCurrentView('explore-knowledge')}
+          />
+        )}
+
+        {currentView === 'verification' && (
+          <VerificationWorkflowView />
         )}
 
         {currentView === 'destination' && (
@@ -123,10 +143,6 @@ export function App() {
           </div>
         )}
 
-        {currentView === 'verification' && (
-          <VerificationView tasks={DEMO_VERIFICATION_TASKS} />
-        )}
-
         {currentView === 'contributor' && (
           <ContributorDashboardView walletBalance={walletBalance} />
         )}
@@ -152,6 +168,14 @@ export function App() {
       <Footer />
 
     </div>
+  );
+}
+
+export function App() {
+  return (
+    <LocalKnowledgeProvider>
+      <AppContent />
+    </LocalKnowledgeProvider>
   );
 }
 
