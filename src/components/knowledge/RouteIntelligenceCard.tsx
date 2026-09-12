@@ -19,7 +19,10 @@ import {
   RefreshCw
 } from 'lucide-react';
 import type { ComposedRouteResult } from '../../utils/routeComposer';
+<<<<<<< HEAD
 import { SourceBadge } from '../common/SourceBadge';
+=======
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
 
 interface RouteIntelligenceCardProps {
   routeResult: ComposedRouteResult;
@@ -159,6 +162,7 @@ export const RouteIntelligenceCard: React.FC<RouteIntelligenceCardProps> = ({
           </p>
         </div>
 
+<<<<<<< HEAD
         {/* Route Type & Provenance Badges */}
         <div className="flex items-center space-x-2">
           <SourceBadge
@@ -179,6 +183,12 @@ export const RouteIntelligenceCard: React.FC<RouteIntelligenceCardProps> = ({
             <Bus className="w-4 h-4 text-emerald-400" />
             <span>{routeResult.hasDirectBus ? 'Direct Bus Route' : 'Multimodal Route (Bus + Auto)'}</span>
           </div>
+=======
+        {/* Route Type Badge */}
+        <div className="bg-stone-800 px-3.5 py-1.5 rounded-xl border border-stone-700 text-xs font-bold text-stone-200 flex items-center space-x-1.5">
+          <Bus className="w-4 h-4 text-emerald-400" />
+          <span>{routeResult.hasDirectBus ? 'Direct Bus Route' : 'Multimodal Route (Bus + Auto)'}</span>
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
         </div>
       </div>
 

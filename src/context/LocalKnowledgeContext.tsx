@@ -1,15 +1,19 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import type { LocalKnowledgeItem, NewKnowledgeSubmission } from '../types/localKnowledge';
+<<<<<<< HEAD
 import type { 
   OutdatedReport, 
   ProvenanceMetrics, 
   VerificationHistory, 
   DataProvenance 
 } from '../types/provenance';
+=======
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
 import { INITIAL_KNOWLEDGE_ITEMS } from '../data/initialKnowledge';
 
 interface LocalKnowledgeContextType {
   items: LocalKnowledgeItem[];
+<<<<<<< HEAD
   outdatedReports: OutdatedReport[];
   metrics: ProvenanceMetrics;
   addSubmission: (submission: NewKnowledgeSubmission) => LocalKnowledgeItem;
@@ -26,10 +30,19 @@ interface LocalKnowledgeContextType {
     reasonCategory: 'fare_changed' | 'route_changed' | 'service_halted' | 'boarding_changed' | 'incorrect_info' | 'other';
     notes: string;
   }) => void;
+=======
+  addSubmission: (submission: NewKnowledgeSubmission) => LocalKnowledgeItem;
+  verifyItem: (id: string) => void;
+  rejectItem: (id: string, reason?: string) => void;
+  rateItem: (id: string, newRating: number) => void;
+  reportOutdated: (id: string) => void;
+  reVerifyItem: (id: string) => void;
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
 }
 
 const LocalKnowledgeContext = createContext<LocalKnowledgeContextType | undefined>(undefined);
 
+<<<<<<< HEAD
 const LOCAL_STORAGE_KEY = 'local_knowledge_items_v3';
 const REPORTS_STORAGE_KEY = 'local_knowledge_outdated_reports_v1';
 
@@ -81,6 +94,9 @@ const SEED_PROVENANCE_ITEMS: LocalKnowledgeItem[] = INITIAL_KNOWLEDGE_ITEMS.map(
     history: initialHistory
   };
 });
+=======
+const LOCAL_STORAGE_KEY = 'local_knowledge_items_v1';
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
 
 export const LocalKnowledgeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [items, setItems] = useState<LocalKnowledgeItem[]>(() => {
@@ -92,6 +108,7 @@ export const LocalKnowledgeProvider: React.FC<{ children: React.ReactNode }> = (
     } catch {
       // Fallback
     }
+<<<<<<< HEAD
     return SEED_PROVENANCE_ITEMS;
   });
 
@@ -119,10 +136,16 @@ export const LocalKnowledgeProvider: React.FC<{ children: React.ReactNode }> = (
   });
 
   // Sync to localStorage
+=======
+    return INITIAL_KNOWLEDGE_ITEMS;
+  });
+
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
   useEffect(() => {
     try {
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(items));
     } catch (e) {
+<<<<<<< HEAD
       console.error('Failed to save items to localStorage:', e);
     }
   }, [items]);
@@ -175,6 +198,15 @@ export const LocalKnowledgeProvider: React.FC<{ children: React.ReactNode }> = (
 
     const newItem: LocalKnowledgeItem = {
       id: newId,
+=======
+      console.error('Failed to save to localStorage:', e);
+    }
+  }, [items]);
+
+  const addSubmission = (submission: NewKnowledgeSubmission): LocalKnowledgeItem => {
+    const newItem: LocalKnowledgeItem = {
+      id: `lk-user-${Date.now()}`,
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
       from: submission.from.trim(),
       to: submission.to.trim(),
       category: submission.category,
@@ -183,6 +215,7 @@ export const LocalKnowledgeProvider: React.FC<{ children: React.ReactNode }> = (
       autoFare: submission.autoFare?.trim() || undefined,
       boardingPoint: submission.boardingPoint?.trim() || undefined,
       dropPoint: submission.dropPoint?.trim() || undefined,
+<<<<<<< HEAD
       intermediateStop: submission.intermediateStop?.trim() || undefined,
       lastMileMode: submission.lastMileMode,
       explicitNoDirectBus: submission.explicitNoDirectBus,
@@ -212,12 +245,22 @@ export const LocalKnowledgeProvider: React.FC<{ children: React.ReactNode }> = (
       popularDish: submission.popularDish,
       isVeg: submission.isVeg,
       openingHours: submission.openingHours
+=======
+      additionalInfo: submission.additionalInfo?.trim() || undefined,
+      status: 'PENDING',
+      reportedBy: submission.reportedBy || 'Local Contributor',
+      submittedAt: new Date().toISOString().split('T')[0],
+      communityRating: 0,
+      ratingCount: 0,
+      outdatedReportsCount: 0
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
     };
 
     setItems((prev) => [newItem, ...prev]);
     return newItem;
   };
 
+<<<<<<< HEAD
   const verifyItem = (id: string, verifierName = 'LocalLens Verification Desk') => {
     const today = new Date().toISOString().split('T')[0];
     setItems((prev) =>
@@ -334,6 +377,34 @@ export const LocalKnowledgeProvider: React.FC<{ children: React.ReactNode }> = (
           history: [...(item.history || []), updatedHistory]
         };
       })
+=======
+  const verifyItem = (id: string) => {
+    setItems((prev) =>
+      prev.map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              status: 'VERIFIED',
+              verifiedAt: new Date().toISOString().split('T')[0],
+              verifiedBy: 'LOCAL Platform Desk'
+            }
+          : item
+      )
+    );
+  };
+
+  const rejectItem = (id: string, reason?: string) => {
+    setItems((prev) =>
+      prev.map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              status: 'OUTDATED',
+              rejectionReason: reason || 'Details could not be verified by platform desk'
+            }
+          : item
+      )
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
     );
   };
 
@@ -354,12 +425,17 @@ export const LocalKnowledgeProvider: React.FC<{ children: React.ReactNode }> = (
     );
   };
 
+<<<<<<< HEAD
   const reportOutdated = (id: string, reason = 'Flagged by community as outdated') => {
     const today = new Date().toISOString().split('T')[0];
+=======
+  const reportOutdated = (id: string) => {
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
     setItems((prev) =>
       prev.map((item) => {
         if (item.id !== id) return item;
         const newCount = (item.outdatedReportsCount || 0) + 1;
+<<<<<<< HEAD
 
         const updatedHistory: VerificationHistory = {
           id: `vh-${id}-${Date.now()}`,
@@ -389,11 +465,18 @@ export const LocalKnowledgeProvider: React.FC<{ children: React.ReactNode }> = (
           status: 'OUTDATED',
           provenance: updatedProvenance,
           history: [...(item.history || []), updatedHistory]
+=======
+        return {
+          ...item,
+          outdatedReportsCount: newCount,
+          status: 'OUTDATED'
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
         };
       })
     );
   };
 
+<<<<<<< HEAD
   const reVerifyItem = (id: string, verifierName = 'LocalLens Re-verification Desk') => {
     const today = new Date().toISOString().split('T')[0];
     setItems((prev) =>
@@ -459,10 +542,29 @@ export const LocalKnowledgeProvider: React.FC<{ children: React.ReactNode }> = (
     reportOutdated(reportData.targetId, `${reportData.reasonCategory}: ${reportData.notes}`);
   };
 
+=======
+  const reVerifyItem = (id: string) => {
+    setItems((prev) =>
+      prev.map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              status: 'VERIFIED',
+              outdatedReportsCount: 0,
+              verifiedAt: new Date().toISOString().split('T')[0],
+              verifiedBy: 'LOCAL Platform Re-verification Desk'
+            }
+          : item
+      )
+    );
+  };
+
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
   return (
     <LocalKnowledgeContext.Provider
       value={{
         items,
+<<<<<<< HEAD
         outdatedReports,
         metrics,
         addSubmission,
@@ -473,6 +575,14 @@ export const LocalKnowledgeProvider: React.FC<{ children: React.ReactNode }> = (
         reportOutdated,
         reVerifyItem,
         submitOutdatedReport
+=======
+        addSubmission,
+        verifyItem,
+        rejectItem,
+        rateItem,
+        reportOutdated,
+        reVerifyItem
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
       }}
     >
       {children}

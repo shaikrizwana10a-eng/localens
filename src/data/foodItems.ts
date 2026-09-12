@@ -1,6 +1,7 @@
 import type { FoodItem } from '../types/travel';
 
 export const DEMO_FOOD_ITEMS: FoodItem[] = [
+<<<<<<< HEAD
   // Example from Specification: Local Restaurant Visakhapatnam (Google Maps External Reference)
   {
     id: 'food-google-1',
@@ -32,6 +33,8 @@ export const DEMO_FOOD_ITEMS: FoodItem[] = [
       disclaimer: 'Location and basic listing retrieved from Google Maps Platform. Menu items and pricing reflect external directory references.'
     }
   },
+=======
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
   {
     id: 'food-1',
     dishName: 'Authentic Tirupati Prasadam Laddu',
@@ -44,6 +47,7 @@ export const DEMO_FOOD_ITEMS: FoodItem[] = [
     image: 'https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&q=80&w=600',
     freshnessDaysAgo: 1,
     verifiedCount: 128,
+<<<<<<< HEAD
     confidenceLevel: 'High Confidence',
     address: 'Counter Bay 1-32, Outside Main Temple Complex, Tirumala',
     openingHours: '06:00 AM – 10:00 PM (Daily)',
@@ -60,6 +64,9 @@ export const DEMO_FOOD_ITEMS: FoodItem[] = [
       evidence_available: true,
       disclaimer: 'Official counter pricing verified against Tirumala Tirupati Devasthanams gazetted notifications.'
     }
+=======
+    confidenceLevel: 'High Confidence'
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
   },
   {
     id: 'food-2',
@@ -74,6 +81,7 @@ export const DEMO_FOOD_ITEMS: FoodItem[] = [
     freshnessDaysAgo: 3,
     verifiedCount: 47,
     confidenceLevel: 'High Confidence',
+<<<<<<< HEAD
     isPartner: true,
     address: 'Beside APSRTC Central Bus Station, Tirupati Town',
     openingHours: '12:00 PM – 3:30 PM, 7:00 PM – 10:00 PM',
@@ -90,6 +98,9 @@ export const DEMO_FOOD_ITEMS: FoodItem[] = [
       evidence_available: true,
       disclaimer: 'Community submitted menu price with attached meal receipt proof. Pending desk verification.'
     }
+=======
+    isPartner: true
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
   },
   {
     id: 'food-3',
@@ -103,6 +114,7 @@ export const DEMO_FOOD_ITEMS: FoodItem[] = [
     image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&q=80&w=600',
     freshnessDaysAgo: 2,
     verifiedCount: 39,
+<<<<<<< HEAD
     confidenceLevel: 'High Confidence',
     address: 'Outside Borra Caves Natural Arch Exit, Araku Valley',
     openingHours: '10:00 AM – 5:30 PM (Daily)',
@@ -119,6 +131,9 @@ export const DEMO_FOOD_ITEMS: FoodItem[] = [
       evidence_available: true,
       disclaimer: 'Tribal village stall pricing and cooking authenticity certified by Local Scout.'
     }
+=======
+    confidenceLevel: 'High Confidence'
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
   },
   {
     id: 'food-4',
@@ -133,6 +148,7 @@ export const DEMO_FOOD_ITEMS: FoodItem[] = [
     freshnessDaysAgo: 1,
     verifiedCount: 52,
     confidenceLevel: 'High Confidence',
+<<<<<<< HEAD
     isPartner: true,
     address: 'Near Rushikonda Beach Arch, Visakhapatnam',
     openingHours: '12:00 PM – 4:00 PM, 7:00 PM – 10:30 PM',
@@ -149,6 +165,9 @@ export const DEMO_FOOD_ITEMS: FoodItem[] = [
       evidence_available: true,
       disclaimer: 'Pricing and hygiene verified by LocalLens coastal scout team.'
     }
+=======
+    isPartner: true
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
   },
   {
     id: 'food-5',

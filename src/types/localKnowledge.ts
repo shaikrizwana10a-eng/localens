@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { DataProvenance, DataSourceType, EvidenceItem, VerificationHistory } from './provenance';
 
 export type KnowledgeCategory = 
@@ -11,6 +12,11 @@ export type KnowledgeCategory =
   | 'Tip';
 
 export type KnowledgeStatus = 'VERIFIED' | 'PENDING' | 'UNDER_REVIEW' | 'REJECTED' | 'OUTDATED';
+=======
+export type KnowledgeCategory = 'Bus' | 'Auto' | 'Stay' | 'Experience' | 'Tip';
+
+export type KnowledgeStatus = 'VERIFIED' | 'PENDING' | 'OUTDATED';
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
 
 export interface LocalKnowledgeItem {
   id: string;
@@ -27,7 +33,10 @@ export interface LocalKnowledgeItem {
   explicitNoDirectBus?: boolean; // Set if user explicitly notes no direct bus exists
   additionalInfo?: string;
   status: KnowledgeStatus;
+<<<<<<< HEAD
   sourceType?: DataSourceType;
+=======
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
   reportedBy: string;
   submittedAt: string;
   verifiedAt?: string;
@@ -36,6 +45,7 @@ export interface LocalKnowledgeItem {
   ratingCount: number;
   outdatedReportsCount: number;
   rejectionReason?: string;
+<<<<<<< HEAD
   evidence?: EvidenceItem[];
   provenance?: DataProvenance;
   history?: VerificationHistory[];
@@ -54,6 +64,8 @@ export interface LocalKnowledgeItem {
   popularDish?: string;
   isVeg?: boolean;
   openingHours?: string;
+=======
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
 }
 
 export interface NewKnowledgeSubmission {
@@ -70,6 +82,7 @@ export interface NewKnowledgeSubmission {
   explicitNoDirectBus?: boolean;
   additionalInfo?: string;
   reportedBy?: string;
+<<<<<<< HEAD
   sourceType?: DataSourceType;
   evidence?: EvidenceItem[];
 
@@ -90,3 +103,6 @@ export interface NewKnowledgeSubmission {
   openingHours?: string;
 }
 
+=======
+}
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04

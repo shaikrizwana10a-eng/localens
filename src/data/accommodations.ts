@@ -1,6 +1,7 @@
 import type { Accommodation } from '../types/travel';
 
 export const DEMO_ACCOMMODATIONS: Accommodation[] = [
+<<<<<<< HEAD
   // 1. Hotel Example (Visakhapatnam) - Google Maps External Reference
   {
     id: 'stay-google-1',
@@ -41,6 +42,8 @@ export const DEMO_ACCOMMODATIONS: Accommodation[] = [
       disclaimer: 'External reference retrieved from Google Maps Platform. Basic location and amenities are reference data.'
     }
   },
+=======
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
   {
     id: 'stay-1',
     name: 'Sri Sapthagiri Heritage Residency',
@@ -48,7 +51,10 @@ export const DEMO_ACCOMMODATIONS: Accommodation[] = [
     destinationId: 'tirupati',
     address: 'Near Railway Station Exit 2, Gandhi Road, Tirupati',
     pricePerNight: 1450,
+<<<<<<< HEAD
     priceRange: '₹1,450 – ₹2,100 / night',
+=======
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
     rating: 4.4,
     confidenceLevel: 'High Confidence',
     cleanlinessScore: '94% Verified Clean',
@@ -69,6 +75,7 @@ export const DEMO_ACCOMMODATIONS: Accommodation[] = [
     ],
     coordinates: { lat: 13.6290, lng: 79.4200 },
     verifiedCount: 38,
+<<<<<<< HEAD
     isPartner: true,
     contactNumber: '+91 877 222 4589',
     roomTypes: ['Standard Double', 'Deluxe AC Triple', 'Family Suite (4 Beds)'],
@@ -81,6 +88,9 @@ export const DEMO_ACCOMMODATIONS: Accommodation[] = [
       evidence_available: true,
       disclaimer: 'Physically inspected by Local Scout. Cleanliness, bathroom hygiene, and ₹0 parking charge verified.'
     }
+=======
+    isPartner: true
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
   },
   {
     id: 'stay-2',
@@ -106,6 +116,7 @@ export const DEMO_ACCOMMODATIONS: Accommodation[] = [
       'Very clean water supply; bring your own bath towels and soap.'
     ],
     coordinates: { lat: 13.6840, lng: 79.3490 },
+<<<<<<< HEAD
     verifiedCount: 64,
     provenance: {
       source_type: 'LOCAL_LENS',
@@ -116,6 +127,9 @@ export const DEMO_ACCOMMODATIONS: Accommodation[] = [
       evidence_available: true,
       disclaimer: 'TTD official rest house tariff and online booking procedure verified with pilgrim welfare officer.'
     }
+=======
+    verifiedCount: 64
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
   },
   {
     id: 'stay-3',
@@ -124,7 +138,10 @@ export const DEMO_ACCOMMODATIONS: Accommodation[] = [
     destinationId: 'araku',
     address: 'Main Road near Coffee Museum, Araku',
     pricePerNight: 1850,
+<<<<<<< HEAD
     priceRange: '₹1,600 – ₹2,200 / night',
+=======
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
     rating: 4.6,
     confidenceLevel: 'High Confidence',
     cleanlinessScore: '96% Verified Clean',
@@ -143,6 +160,7 @@ export const DEMO_ACCOMMODATIONS: Accommodation[] = [
     ],
     coordinates: { lat: 18.3280, lng: 82.8790 },
     verifiedCount: 22,
+<<<<<<< HEAD
     isPartner: true,
     contactNumber: '+91 8936 249 102',
     roomTypes: ['Cottage Room', 'Family Attic Suite'],
@@ -155,6 +173,9 @@ export const DEMO_ACCOMMODATIONS: Accommodation[] = [
       evidence_available: true,
       disclaimer: 'Community submitted homestay listing with room receipt proof. Pending annual desk visit.'
     }
+=======
+    isPartner: true
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
   },
   {
     id: 'stay-4',
@@ -163,7 +184,10 @@ export const DEMO_ACCOMMODATIONS: Accommodation[] = [
     destinationId: 'vizag',
     address: 'RK Beach Road near Pandurangapuram, Visakhapatnam',
     pricePerNight: 2400,
+<<<<<<< HEAD
     priceRange: '₹2,400 – ₹3,500 / night',
+=======
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
     rating: 4.5,
     confidenceLevel: 'High Confidence',
     cleanlinessScore: '92% Verified Clean',
@@ -181,6 +205,7 @@ export const DEMO_ACCOMMODATIONS: Accommodation[] = [
       'Direct walking path to submarine museum.'
     ],
     coordinates: { lat: 17.7140, lng: 83.3250 },
+<<<<<<< HEAD
     verifiedCount: 45,
     contactNumber: '+91 891 278 9900',
     roomTypes: ['Sea View Executive', 'Ocean Deluxe'],
@@ -193,5 +218,8 @@ export const DEMO_ACCOMMODATIONS: Accommodation[] = [
       evidence_available: true,
       disclaimer: 'Verified by Local Scout. Basement parking and fiber Wi-Fi confirmed on site.'
     }
+=======
+    verifiedCount: 45
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
   }
 ];

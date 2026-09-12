@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import { 
   ShieldCheck, 
   PhoneCall, 
@@ -23,15 +24,31 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer className="bg-[#1C1917] text-stone-300 pt-12 pb-8 border-t border-stone-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+=======
+import { ShieldCheck, PhoneCall, MapPin, Sparkles } from 'lucide-react';
+
+export const Footer: React.FC = () => {
+  return (
+    <footer className="bg-[#1C1917] text-stone-300 pt-12 pb-8 border-t border-stone-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
         
         {/* 3 Pillars Summary */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-10 border-b border-stone-800">
           <div className="flex items-start space-x-3">
+<<<<<<< HEAD
             <div className="w-10 h-10 rounded-xl bg-[#1B4332] text-white flex items-center justify-center shrink-0">
               <MapPin className="w-5 h-5 text-emerald-300" />
             </div>
             <div>
               <h4 className="font-bold text-white text-sm">Travel Locally & Affordably</h4>
+=======
+            <div className="w-10 h-10 rounded-lg bg-[#1B4332] text-white flex items-center justify-center shrink-0">
+              <MapPin className="w-5 h-5 text-emerald-300" />
+            </div>
+            <div>
+              <h4 className="font-semibold text-white text-sm">Travel Locally & Affordably</h4>
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
               <p className="text-xs text-stone-400 mt-1 leading-relaxed">
                 Step-by-step local bus numbers, boarding stands, and community-reported fares. Save on local transit.
               </p>
@@ -39,11 +56,19 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
 
           <div className="flex items-start space-x-3">
+<<<<<<< HEAD
             <div className="w-10 h-10 rounded-xl bg-[#1B4332] text-white flex items-center justify-center shrink-0">
               <Sparkles className="w-5 h-5 text-amber-300" />
             </div>
             <div>
               <h4 className="font-bold text-white text-sm">Platform Verification</h4>
+=======
+            <div className="w-10 h-10 rounded-lg bg-[#1B4332] text-white flex items-center justify-center shrink-0">
+              <Sparkles className="w-5 h-5 text-amber-300" />
+            </div>
+            <div>
+              <h4 className="font-semibold text-white text-sm">Platform Verification</h4>
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
               <p className="text-xs text-stone-400 mt-1 leading-relaxed">
                 Community reports start as PENDING. Only audited entries carry official verification stamps with dates.
               </p>
@@ -51,11 +76,19 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
 
           <div className="flex items-start space-x-3">
+<<<<<<< HEAD
             <div className="w-10 h-10 rounded-xl bg-[#1B4332] text-white flex items-center justify-center shrink-0">
               <ShieldCheck className="w-5 h-5 text-emerald-300" />
             </div>
             <div>
               <h4 className="font-bold text-white text-sm">Traveler Feedback & Re-Check</h4>
+=======
+            <div className="w-10 h-10 rounded-lg bg-[#1B4332] text-white flex items-center justify-center shrink-0">
+              <ShieldCheck className="w-5 h-5 text-emerald-300" />
+            </div>
+            <div>
+              <h4 className="font-semibold text-white text-sm">Traveler Feedback & Re-Check</h4>
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
               <p className="text-xs text-stone-400 mt-1 leading-relaxed">
                 Rate accuracy with 1–5 stars and report outdated info to trigger re-verification.
               </p>
@@ -64,6 +97,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         </div>
 
         {/* Main Footer Links & Brand Section */}
+<<<<<<< HEAD
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 py-4 border-b border-stone-800 text-xs">
           
           {/* Brand Col */}
@@ -78,11 +112,21 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <span className="font-black text-xl text-white tracking-tight">LocalLens</span>
             </div>
             <p className="font-extrabold text-emerald-400 text-xs uppercase tracking-wide">
+=======
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 py-8 border-b border-stone-800 text-xs">
+          <div className="space-y-2">
+            <div className="flex items-center space-x-2">
+              <div className="w-7 h-7 rounded bg-[#1B4332] text-white flex items-center justify-center font-extrabold text-sm">L</div>
+              <span className="font-black text-xl text-white tracking-tight">LOCAL</span>
+            </div>
+            <p className="font-bold text-emerald-400 text-xs uppercase tracking-wide">
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
               TRAVEL LIKE A LOCAL.
             </p>
             <p className="text-stone-400 text-xs italic">
               Go like someone who knows the place.
             </p>
+<<<<<<< HEAD
             <p className="text-stone-400 leading-relaxed text-[11px]">
               Practical local travel intelligence generated by verified citizens and audited by platform desks.
             </p>
@@ -164,10 +208,43 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <h5 className="font-bold text-white uppercase text-[11px] tracking-wider mb-3">Support & Safety</h5>
             <div className="bg-stone-900 p-3.5 rounded-2xl border border-stone-800 space-y-2.5">
               <div className="flex items-center text-amber-400 font-bold">
+=======
+            <p className="text-stone-400 leading-relaxed text-[11px] pt-1">
+              Practical local travel knowledge generated by the community and verified by the platform.
+            </p>
+          </div>
+
+          <div>
+            <h5 className="font-bold text-white uppercase text-[11px] tracking-wider mb-3">Core Platform Actions</h5>
+            <ul className="space-y-2 text-stone-400">
+              <li><a href="#explore" className="hover:text-white transition-colors">Explore Local Knowledge</a></li>
+              <li><a href="#share" className="hover:text-white transition-colors">Share What You Know</a></li>
+              <li><a href="#verification" className="hover:text-white transition-colors">Platform Verification Desk</a></li>
+              <li><a href="#rating" className="hover:text-white transition-colors">Community Rating System</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h5 className="font-bold text-white uppercase text-[11px] tracking-wider mb-3">Popular Destinations</h5>
+            <ul className="space-y-2 text-stone-400">
+              <li><a href="#vizag" className="hover:text-white transition-colors">Gajuwaka → RK Beach (Vizag)</a></li>
+              <li><a href="#tirupati" className="hover:text-white transition-colors">Tirupati → Tirumala Hills</a></li>
+              <li><a href="#hyderabad" className="hover:text-white transition-colors">Secunderabad → Charminar</a></li>
+              <li><a href="#bangalore" className="hover:text-white transition-colors">Majestic → Cubbon Park</a></li>
+              <li><a href="#araku" className="hover:text-white transition-colors">Araku → Borra Caves</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h5 className="font-bold text-white uppercase text-[11px] tracking-wider mb-3">Emergency & Safety</h5>
+            <div className="bg-stone-900 p-3 rounded-xl border border-stone-800 space-y-2">
+              <div className="flex items-center text-amber-400 font-semibold">
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
                 <PhoneCall className="w-3.5 h-3.5 mr-1.5" />
                 <span>Tourist Helpline: 1363</span>
               </div>
               <p className="text-[11px] text-stone-400">
+<<<<<<< HEAD
                 National Emergency: 112 (Police & Ambulance)
               </p>
               <div className="pt-2 border-t border-stone-800 text-[10px] text-stone-500 space-y-1">
@@ -186,6 +263,24 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <span>Built with Ground Truth</span>
             <span>•</span>
             <span>Supabase PostgreSQL Protected</span>
+=======
+                National Emergency: 112 | Police: 100
+              </p>
+              <p className="text-[10px] text-stone-500 italic mt-1">
+                LOCAL provides community-reported local advice verified by platform process.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom copyright */}
+        <div className="pt-6 flex flex-wrap items-center justify-between gap-4 text-[11px] text-stone-500">
+          <p>© 2026 LOCAL Platform. Travel like someone who knows the place.</p>
+          <div className="flex space-x-4">
+            <span className="hover:text-stone-300">Data Integrity Rules</span>
+            <span className="hover:text-stone-300">Verification Guidelines</span>
+            <span className="hover:text-stone-300">Terms of Use</span>
+>>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
           </div>
         </div>
 
