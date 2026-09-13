@@ -4,17 +4,12 @@ import {
   Award, 
   Building2, 
   Globe2, 
-<<<<<<< HEAD
-=======
-  User, 
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
   Coins,
   HelpCircle,
   ShieldCheck,
   CheckCircle2,
   Share2,
   Search,
-<<<<<<< HEAD
   X,
   Menu,
   Sparkles,
@@ -22,11 +17,7 @@ import {
 } from 'lucide-react';
 import type { UserRole } from '../../types/travel';
 import { useAuth } from '../../context/AuthContext';
-=======
-  X
-} from 'lucide-react';
-import type { UserRole } from '../../types/travel';
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
+import { MobileDrawer } from './MobileDrawer';
 
 interface HeaderProps {
   currentView: string;
@@ -43,10 +34,9 @@ export const Header: React.FC<HeaderProps> = ({
   onRoleChange,
   walletBalance
 }) => {
-<<<<<<< HEAD
   const { profile } = useAuth();
   const [showGuideModal, setShowGuideModal] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
   const [roleDropdownOpen, setRoleDropdownOpen] = useState(false);
 
   const roles: { role: UserRole; label: string; icon: React.ReactNode; desc: string }[] = [
@@ -70,14 +60,15 @@ export const Header: React.FC<HeaderProps> = ({
 
   const handleNavClick = (view: string) => {
     onNavigate(view);
-    setMobileMenuOpen(false);
+    setMobileDrawerOpen(false);
   };
 
   return (
+    <>
     <header className="sticky top-0 z-50 bg-[#FAF9F6] border-b border-[#E7E5E4] shadow-2xs">
       
-      {/* 1. Thin Professional Top Bar */}
-      <div className="bg-[#1C1917] text-[#FAF9F6] px-4 sm:px-8 py-1.5 text-xs">
+      {/* 1. Thin Professional Top Bar — hidden on mobile to save vertical space */}
+      <div className="hidden sm:block bg-[#1C1917] text-[#FAF9F6] px-4 sm:px-8 py-1.5 text-xs">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
           
           {/* Left: Platform Verified Assurance */}
@@ -128,37 +119,6 @@ export const Header: React.FC<HeaderProps> = ({
                 </button>
               ))}
             </div>
-
-            {/* Mobile Mode Dropdown Button */}
-            <div className="relative sm:hidden">
-              <button
-                onClick={() => setRoleDropdownOpen(!roleDropdownOpen)}
-                className="bg-stone-800 text-stone-200 px-2 py-0.5 rounded text-[11px] font-bold flex items-center space-x-1"
-              >
-                <span>{currentRoleObj.icon}</span>
-                <span>{currentRoleObj.label}</span>
-                <ChevronDown className="w-3 h-3 text-stone-400" />
-              </button>
-              {roleDropdownOpen && (
-                <div className="absolute right-0 mt-1 w-44 bg-stone-900 border border-stone-700 rounded-xl shadow-xl z-50 p-1 space-y-0.5">
-                  {roles.map((r) => (
-                    <button
-                      key={r.role}
-                      onClick={() => {
-                        onRoleChange(r.role);
-                        setRoleDropdownOpen(false);
-                      }}
-                      className={`w-full text-left px-2.5 py-1.5 rounded-lg text-xs flex items-center space-x-2 ${
-                        userRole === r.role ? 'bg-[#1B4332] text-white font-bold' : 'text-stone-300 hover:bg-stone-800'
-                      }`}
-                    >
-                      <span>{r.icon}</span>
-                      <span>{r.label}</span>
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
           </div>
 
         </div>
@@ -166,101 +126,39 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* 2. Main Navigation Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 gap-4">
+        <div className="flex items-center justify-between h-14 sm:h-16 gap-4">
           
+          {/* Mobile: Hamburger trigger (left side) */}
+          <button
+            type="button"
+            onClick={() => setMobileDrawerOpen(true)}
+            className="lg:hidden p-2 -ml-1 rounded-xl text-stone-700 hover:bg-stone-100 border border-[#E7E5E4] mobile-touch-target"
+            aria-label="Open navigation menu"
+          >
+            <Menu className="w-5 h-5" />
+          </button>
+
           {/* Brand Logo & Name */}
           <div 
             className="flex items-center space-x-2.5 cursor-pointer group shrink-0"
             onClick={() => onNavigate('home')}
           >
             <div className="w-9 h-9 rounded-xl bg-[#1B4332] text-white flex items-center justify-center font-black text-xl shadow-xs group-hover:bg-[#265e46] transition-colors">
-=======
-  const [showGuideModal, setShowGuideModal] = useState(false);
-
-  const roles: { role: UserRole; label: string; icon: React.ReactNode; desc: string }[] = [
-    { role: 'tourist', label: 'Traveller', icon: <Compass className="w-4 h-4" />, desc: 'Explore & Plan' },
-    { role: 'contributor', label: 'Local Scout', icon: <Award className="w-4 h-4" />, desc: 'Verify & Earn' },
-    { role: 'business', label: 'Business Owner', icon: <Building2 className="w-4 h-4" />, desc: 'Insights & Reach' },
-    { role: 'foreign_tourist', label: 'Foreign Tourist', icon: <Globe2 className="w-4 h-4" />, desc: 'Safety & Guides' }
-  ];
-
-  return (
-    <header className="sticky top-0 z-50 bg-[#FAF9F6] border-b border-[#E7E5E4] shadow-xs">
-      {/* Top Banner / Role Status */}
-      <div className="bg-[#1C1917] text-[#FAF9F6] px-4 py-1.5 text-xs flex flex-wrap items-center justify-between gap-2">
-        <div className="flex items-center space-x-2">
-          <span className="bg-[#1B4332] text-emerald-300 font-semibold px-2 py-0.5 rounded text-[11px] tracking-wide uppercase">
-            Platform Verified
-          </span>
-          <span className="text-stone-300 hidden sm:inline font-medium">
-            Verified local travel details • Genuine community reports only
-          </span>
-          <button
-            onClick={() => setShowGuideModal(true)}
-            className="text-emerald-400 hover:underline text-[11px] font-bold inline-flex items-center ml-2"
-          >
-            <HelpCircle className="w-3 h-3 mr-1" /> How LOCAL Works (User Guide)
-          </button>
-        </div>
-
-        {/* Role Switcher Pill Bar */}
-        <div className="flex items-center space-x-1">
-          <span className="text-stone-400 mr-1 text-[11px] font-medium">Mode:</span>
-          {roles.map((r) => (
-            <button
-              key={r.role}
-              onClick={() => onRoleChange(r.role)}
-              className={`inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium transition-all ${
-                userRole === r.role
-                  ? 'bg-[#1B4332] text-white shadow-xs'
-                  : 'text-stone-300 hover:text-white hover:bg-stone-800'
-              }`}
-              title={r.desc}
-            >
-              <span className="mr-1">{r.icon}</span>
-              {r.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Main Header Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 gap-4">
-          
-          {/* Logo & Brand */}
-          <div 
-            className="flex items-center space-x-3 cursor-pointer group shrink-0"
-            onClick={() => onNavigate('home')}
-          >
-            <div className="w-10 h-10 rounded-lg bg-[#1B4332] text-white flex items-center justify-center font-extrabold text-xl shadow-xs group-hover:bg-[#2D6A4F] transition-colors">
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
               L
             </div>
             <div>
               <div className="flex items-center space-x-1.5">
-<<<<<<< HEAD
                 <span className="font-black text-xl sm:text-2xl tracking-tight text-[#1C1917]">LocalLens</span>
-                <span className="text-[9px] bg-emerald-100 text-[#1B4332] px-1.5 py-0.2 rounded font-extrabold border border-emerald-300 uppercase">
+                <span className="text-[9px] bg-emerald-100 text-[#1B4332] px-1.5 py-0.2 rounded font-extrabold border border-emerald-300 uppercase hidden sm:inline">
                   VERIFIED
                 </span>
               </div>
-              <p className="text-[9px] text-stone-500 font-bold uppercase tracking-wider -mt-0.5">
+              <p className="text-[9px] text-stone-500 font-bold uppercase tracking-wider -mt-0.5 hidden sm:block">
                 TRAVEL LIKE A LOCAL
-=======
-                <span className="font-black text-2xl tracking-tight text-[#1C1917]">LOCAL</span>
-                <span className="text-[10px] bg-emerald-100 text-[#1B4332] px-1.5 py-0.2 rounded font-bold border border-emerald-300 uppercase">
-                  VERIFIED
-                </span>
-              </div>
-              <p className="text-[11px] text-[#57534E] leading-none font-bold uppercase tracking-wider">
-                TRAVEL LIKE A LOCAL.
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
               </p>
             </div>
           </div>
 
-<<<<<<< HEAD
           {/* Desktop Center Navigation */}
           <nav className="hidden lg:flex items-center space-x-1 text-xs font-bold">
             {navItems.map((item) => {
@@ -285,69 +183,6 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 onClick={() => handleNavClick('business')}
                 className={`px-3 py-2 rounded-lg transition-all ${
-=======
-          {/* Center Navigation Links */}
-          <nav className="hidden lg:flex items-center space-x-2 text-xs font-bold">
-            <button
-              onClick={() => onNavigate('home')}
-              className={`px-3 py-2 rounded-md transition-colors ${
-                currentView === 'home' ? 'bg-[#EFECE6] text-[#1B4332]' : 'text-[#57534E] hover:text-[#1C1917] hover:bg-stone-100'
-              }`}
-            >
-              Home
-            </button>
-
-            <button
-              onClick={() => onNavigate('destination')}
-              className={`px-3 py-2 rounded-md transition-colors ${
-                currentView === 'destination' ? 'bg-[#EFECE6] text-[#1B4332]' : 'text-[#57534E] hover:text-[#1C1917] hover:bg-stone-100'
-              }`}
-            >
-              Destinations
-            </button>
-
-            <button
-              onClick={() => onNavigate('transport')}
-              className={`px-3 py-2 rounded-md transition-colors ${
-                currentView === 'transport' ? 'bg-[#EFECE6] text-[#1B4332]' : 'text-[#57534E] hover:text-[#1C1917] hover:bg-stone-100'
-              }`}
-            >
-              Transport
-            </button>
-
-            <button
-              onClick={() => onNavigate('stays')}
-              className={`px-3 py-2 rounded-md transition-colors ${
-                currentView === 'stays' ? 'bg-[#EFECE6] text-[#1B4332]' : 'text-[#57534E] hover:text-[#1C1917] hover:bg-stone-100'
-              }`}
-            >
-              Stays & Food
-            </button>
-
-            <button
-              onClick={() => onNavigate('planner')}
-              className={`px-3 py-2 rounded-md transition-colors ${
-                currentView === 'planner' ? 'bg-[#EFECE6] text-[#1B4332]' : 'text-[#57534E] hover:text-[#1C1917] hover:bg-stone-100'
-              }`}
-            >
-              AI Planner
-            </button>
-
-            <button
-              onClick={() => onNavigate('verification')}
-              className={`px-3 py-2 rounded-md transition-colors flex items-center space-x-1 ${
-                currentView === 'verification' ? 'bg-[#1B4332] text-white' : 'text-[#57534E] hover:text-[#1C1917] hover:bg-stone-100'
-              }`}
-            >
-              <ShieldCheck className="w-3.5 h-3.5 text-[#1B4332]" />
-              <span>Verification Desk</span>
-            </button>
-
-            {userRole === 'business' && (
-              <button
-                onClick={() => onNavigate('business')}
-                className={`px-3 py-2 rounded-md transition-colors ${
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
                   currentView === 'business' ? 'bg-[#1B4332] text-white' : 'text-stone-700 bg-amber-100 hover:bg-amber-200'
                 }`}
               >
@@ -356,37 +191,18 @@ export const Header: React.FC<HeaderProps> = ({
             )}
           </nav>
 
-<<<<<<< HEAD
           {/* Right Action Icons & User Profile */}
           <div className="flex items-center space-x-2 shrink-0">
-            {/* Profile / Avatar Pill */}
+            {/* Profile / Avatar Pill — hidden on mobile (bottom nav handles it) */}
             <button
               onClick={() => onNavigate('profile')}
               title="View Profile, Preferences & Saved Places"
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-2 border shadow-2xs ${
-=======
-          {/* Right Action Icons & Wallet */}
-          <div className="flex items-center space-x-2 shrink-0">
-            {userRole === 'contributor' && (
-              <div 
-                onClick={() => onNavigate('contributor')}
-                className="cursor-pointer bg-emerald-50 border border-emerald-300 text-[#1B4332] px-3 py-1 rounded-full text-xs font-semibold flex items-center space-x-1 hover:bg-emerald-100 transition-colors"
-              >
-                <Coins className="w-3.5 h-3.5 text-[#1B4332]" />
-                <span>Wallet: ₹{walletBalance}</span>
-              </div>
-            )}
-
-            <button
-              onClick={() => onNavigate('profile')}
-              className={`px-3 py-2 rounded-md text-xs font-bold transition-colors flex items-center space-x-1 border ${
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
+              className={`hidden sm:flex px-3 py-1.5 rounded-xl text-xs font-bold transition-all items-center space-x-2 border shadow-2xs ${
                 currentView === 'profile'
                   ? 'bg-[#1B4332] text-white border-[#1B4332]'
                   : 'bg-white text-[#1C1917] hover:bg-stone-100 border-[#E7E5E4]'
               }`}
             >
-<<<<<<< HEAD
               <div className={`w-6 h-6 rounded-lg flex items-center justify-center text-[10px] font-black shrink-0 ${
                 currentView === 'profile' ? 'bg-emerald-600 text-white' : 'bg-[#1B4332] text-white'
               }`}>
@@ -395,78 +211,30 @@ export const Header: React.FC<HeaderProps> = ({
               <span className="hidden sm:inline font-bold">
                 {profile.full_name ? profile.full_name.split(' ')[0] : 'Profile'}
               </span>
-              <span className="sm:hidden font-bold">Profile</span>
             </button>
 
-            {/* Mobile Hamburger Menu Toggle */}
+            {/* Mobile: Compact profile avatar (visible only on mobile) */}
             <button
-              type="button"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-xl text-stone-700 hover:bg-stone-100 border border-[#E7E5E4]"
-              aria-label="Toggle Navigation"
+              onClick={() => onNavigate('profile')}
+              className={`sm:hidden w-9 h-9 rounded-xl flex items-center justify-center text-[10px] font-black shrink-0 mobile-touch-target transition-colors ${
+                currentView === 'profile' ? 'bg-emerald-600 text-white' : 'bg-[#1B4332] text-white'
+              }`}
+              aria-label="Profile"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-=======
-              <User className="w-3.5 h-3.5 text-[#1B4332]" />
-              <span>Saved</span>
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
+              {profile.full_name ? profile.full_name.charAt(0).toUpperCase() : 'R'}
             </button>
           </div>
 
         </div>
       </div>
 
-<<<<<<< HEAD
-      {/* 3. Mobile Navigation Drawer */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-[#E7E5E4] px-4 py-4 space-y-3 shadow-lg">
-          <div className="grid grid-cols-2 gap-2 text-xs font-bold">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => handleNavClick(item.view)}
-                className={`p-2.5 rounded-xl text-left flex items-center space-x-1.5 ${
-                  currentView === item.view
-                    ? 'bg-[#1B4332] text-white'
-                    : 'bg-[#FAF9F6] text-stone-700 hover:bg-stone-100 border border-[#E7E5E4]'
-                }`}
-              >
-                {item.isAi && <Sparkles className="w-3.5 h-3.5 text-emerald-400" />}
-                <span>{item.label}</span>
-              </button>
-            ))}
-          </div>
-
-          <div className="pt-2 border-t border-[#E7E5E4] flex items-center justify-between text-xs">
-            <button
-              onClick={() => handleNavClick('profile')}
-              className="font-bold text-[#1B4332] flex items-center space-x-1"
-            >
-              <span>View Traveler Profile</span>
-            </button>
-            <button
-              onClick={() => setShowGuideModal(true)}
-              className="text-stone-500 font-semibold"
-            >
-              User Guide
-            </button>
-          </div>
-        </div>
-      )}
-
       {/* User Guide Modal */}
       {showGuideModal && (
         <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="bg-white max-w-2xl w-full rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl border border-stone-200 relative max-h-[90vh] overflow-y-auto custom-scrollbar">
-=======
-      {/* User Guide Modal ("How LOCAL Works") */}
-      {showGuideModal && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white max-w-2xl w-full rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl border border-stone-200 relative max-h-[90vh] overflow-y-auto custom-scrollbar">
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
             <button 
               onClick={() => setShowGuideModal(false)}
-              className="absolute top-4 right-4 p-1 rounded-full text-stone-400 hover:text-stone-700 hover:bg-stone-100"
+              className="absolute top-4 right-4 p-2 rounded-full text-stone-400 hover:text-stone-700 hover:bg-stone-100 mobile-touch-target"
             >
               <X className="w-5 h-5" />
             </button>
@@ -475,11 +243,7 @@ export const Header: React.FC<HeaderProps> = ({
               <span className="bg-[#1B4332] text-emerald-300 text-[10px] font-bold uppercase px-2.5 py-0.5 rounded">
                 Platform Guide & Data Integrity
               </span>
-<<<<<<< HEAD
               <h2 className="text-2xl font-extrabold text-[#1C1917]">How LocalLens Works</h2>
-=======
-              <h2 className="text-2xl font-extrabold text-[#1C1917]">How LOCAL Works</h2>
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
               <p className="text-xs text-stone-500 font-medium">TRAVEL LIKE A LOCAL. Go like someone who knows the place.</p>
             </div>
 
@@ -501,11 +265,7 @@ export const Header: React.FC<HeaderProps> = ({
                   2. Share What You Know
                 </h4>
                 <p className="text-stone-600 leading-relaxed">
-<<<<<<< HEAD
                   Submit real local travel observations. Submissions enter the system as <strong>PENDING</strong> so raw unverified data is never falsely trusted.
-=======
-                  Submit real local travel information. Submissions enter the system as <strong>PENDING</strong> so raw unverified data is never falsely trusted.
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
                 </p>
               </div>
 
@@ -531,14 +291,14 @@ export const Header: React.FC<HeaderProps> = ({
 
             </div>
 
-            <div className="bg-emerald-50 border border-emerald-200 p-4 rounded-xl text-xs text-emerald-950 flex items-center justify-between">
+            <div className="bg-emerald-50 border border-emerald-200 p-4 rounded-xl text-xs text-emerald-950 flex flex-col sm:flex-row items-center justify-between gap-3">
               <div className="flex items-center space-x-2">
                 <CheckCircle2 className="w-4 h-4 text-[#1B4332] shrink-0" />
                 <span>Ready to explore? Search any route or city from the navigation bar.</span>
               </div>
               <button
                 onClick={() => setShowGuideModal(false)}
-                className="bg-[#1B4332] text-white font-bold px-4 py-2 rounded-lg shrink-0 ml-2"
+                className="bg-[#1B4332] text-white font-bold px-4 py-2 rounded-lg shrink-0 w-full sm:w-auto mobile-touch-target"
               >
                 Got It!
               </button>
@@ -549,9 +309,18 @@ export const Header: React.FC<HeaderProps> = ({
       )}
 
     </header>
+
+    {/* Mobile Side Drawer (renders outside header for proper z-indexing) */}
+    <MobileDrawer
+      isOpen={mobileDrawerOpen}
+      onClose={() => setMobileDrawerOpen(false)}
+      currentView={currentView}
+      onNavigate={handleNavClick}
+      userRole={userRole}
+      onRoleChange={onRoleChange}
+      walletBalance={walletBalance}
+      profileName={profile.full_name || ''}
+    />
+    </>
   );
 };
-<<<<<<< HEAD
-=======
-
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04

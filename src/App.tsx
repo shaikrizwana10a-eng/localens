@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { useEffect, useState } from 'react';
-=======
-import { useState } from 'react';
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
 import type { UserRole } from './types/travel';
 import { DEMO_DESTINATIONS } from './data/destinations';
 import { DEMO_TRANSPORT_ROUTES } from './data/transportRoutes';
@@ -13,12 +9,10 @@ import { DEMO_MISSIONS, DEMO_VERIFICATION_TASKS } from './data/missions';
 import { DEMO_BUSINESS_ANALYTICS } from './data/businessData';
 
 import { LocalKnowledgeProvider } from './context/LocalKnowledgeContext';
-<<<<<<< HEAD
 import { AuthProvider } from './context/AuthContext';
-=======
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
 import { Header } from './components/common/Header';
 import { Footer } from './components/common/Footer';
+import { BottomNavBar } from './components/common/BottomNavBar';
 import { HomeView } from './components/home/HomeView';
 import { DestinationView } from './components/destination/DestinationView';
 import { TripPlannerView } from './components/planner/TripPlannerView';
@@ -37,19 +31,14 @@ import { LocalKnowledgeExplorer } from './components/knowledge/LocalKnowledgeExp
 import { ShareKnowledgeForm } from './components/knowledge/ShareKnowledgeForm';
 
 export function AppContent() {
-<<<<<<< HEAD
   const [currentView, setCurrentView] = useState<string>(() => {
     const path = window.location.pathname.replace(/^\/+/, '');
     return path || 'home';
   });
-=======
-  const [currentView, setCurrentView] = useState<string>('home');
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
   const [userRole, setUserRole] = useState<UserRole>('tourist');
   const [selectedDestId, setSelectedDestId] = useState<string>('tirupati');
   const [walletBalance, setWalletBalance] = useState<number>(1450);
 
-<<<<<<< HEAD
   // Sync browser URL with view navigation
   useEffect(() => {
     const handlePopState = () => {
@@ -78,16 +67,6 @@ export function AppContent() {
       navigateToView('contributor');
     } else if (newRole === 'foreign_tourist') {
       navigateToView('home');
-=======
-  const handleRoleChange = (newRole: UserRole) => {
-    setUserRole(newRole);
-    if (newRole === 'business') {
-      setCurrentView('business');
-    } else if (newRole === 'contributor') {
-      setCurrentView('contributor');
-    } else if (newRole === 'foreign_tourist') {
-      setCurrentView('home');
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
     }
   };
 
@@ -101,18 +80,14 @@ export function AppContent() {
       {/* Navigation Header with Role Switcher */}
       <Header
         currentView={currentView}
-<<<<<<< HEAD
         onNavigate={navigateToView}
-=======
-        onNavigate={setCurrentView}
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
         userRole={userRole}
         onRoleChange={handleRoleChange}
         walletBalance={walletBalance}
       />
 
       {/* Main Page View Router */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-8 pb-20 sm:pb-0">
         {currentView === 'home' && (
           <HomeView
             destinations={DEMO_DESTINATIONS}
@@ -121,32 +96,20 @@ export function AppContent() {
             foodItems={DEMO_FOOD_ITEMS}
             videoReviews={DEMO_VIDEO_REVIEWS}
             onSelectDestination={setSelectedDestId}
-<<<<<<< HEAD
             onNavigate={navigateToView}
-=======
-            onNavigate={setCurrentView}
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
             userRole={userRole}
           />
         )}
 
         {currentView === 'explore-knowledge' && (
           <LocalKnowledgeExplorer
-<<<<<<< HEAD
             onNavigateToShare={() => navigateToView('share-knowledge')}
-=======
-            onNavigateToShare={() => setCurrentView('share-knowledge')}
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
           />
         )}
 
         {currentView === 'share-knowledge' && (
           <ShareKnowledgeForm
-<<<<<<< HEAD
             onNavigateToExplore={() => navigateToView('explore-knowledge')}
-=======
-            onNavigateToExplore={() => setCurrentView('explore-knowledge')}
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
           />
         )}
 
@@ -159,33 +122,21 @@ export function AppContent() {
             destinations={DEMO_DESTINATIONS}
             selectedDestId={selectedDestId}
             onSelectDestination={setSelectedDestId}
-<<<<<<< HEAD
             onNavigate={navigateToView}
-=======
-            onNavigate={setCurrentView}
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
           />
         )}
 
         {currentView === 'planner' && (
           <TripPlannerView
             destinations={DEMO_DESTINATIONS}
-<<<<<<< HEAD
             onNavigate={navigateToView}
-=======
-            onNavigate={setCurrentView}
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
           />
         )}
 
         {currentView === 'transport' && (
           <TransportExplorerView
             routes={DEMO_TRANSPORT_ROUTES}
-<<<<<<< HEAD
             onNavigate={navigateToView}
-=======
-            onNavigate={setCurrentView}
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
           />
         )}
 
@@ -193,19 +144,11 @@ export function AppContent() {
           <div className="space-y-12">
             <StayExplorerView
               stays={DEMO_ACCOMMODATIONS}
-<<<<<<< HEAD
               onNavigate={navigateToView}
             />
             <FoodExplorerView
               foodItems={DEMO_FOOD_ITEMS}
               onNavigate={navigateToView}
-=======
-              onNavigate={setCurrentView}
-            />
-            <FoodExplorerView
-              foodItems={DEMO_FOOD_ITEMS}
-              onNavigate={setCurrentView}
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
             />
           </div>
         )}
@@ -241,11 +184,7 @@ export function AppContent() {
           <UserProfileView
             destinations={DEMO_DESTINATIONS}
             stays={DEMO_ACCOMMODATIONS}
-<<<<<<< HEAD
             onNavigate={navigateToView}
-=======
-            onNavigate={setCurrentView}
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
           />
         )}
       </main>
@@ -253,23 +192,20 @@ export function AppContent() {
       {/* Global Footer */}
       <Footer />
 
+      {/* Mobile Bottom Navigation Bar */}
+      <BottomNavBar currentView={currentView} onNavigate={navigateToView} />
+
     </div>
   );
 }
 
 export function App() {
   return (
-<<<<<<< HEAD
     <AuthProvider>
       <LocalKnowledgeProvider>
         <AppContent />
       </LocalKnowledgeProvider>
     </AuthProvider>
-=======
-    <LocalKnowledgeProvider>
-      <AppContent />
-    </LocalKnowledgeProvider>
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
   );
 }
 

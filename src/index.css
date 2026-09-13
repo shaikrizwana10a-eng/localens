@@ -14,6 +14,7 @@
     --terracotta-soft: #FFF7F5;
     --sand-accent: #EFECE6;
     --border-color: #E7E5E4;
+    --bottom-nav-height: 4rem;
   }
 
   body {
@@ -23,8 +24,132 @@
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 }
+
+/* =============================================
+   MOBILE-FIRST RESPONSIVE UTILITIES
+   ============================================= */
+
+/* Touch target minimum — 44×44px per WCAG */
+.mobile-touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Safe area bottom padding (iOS notch devices) */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Bottom sheet modal pattern for mobile */
+.mobile-bottom-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+}
+
+.mobile-bottom-sheet-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-height: 95vh;
+  border-radius: 1.5rem 1.5rem 0 0;
+  overflow-y: auto;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Drawer slide animation */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.drawer-enter {
+  animation: slideInLeft 0.3s ease-out forwards;
+}
+
+/* Backdrop fade */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.backdrop-enter {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+/* Skeleton shimmer animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    #e7e5e4 25%,
+    #f5f4f0 50%,
+    #e7e5e4 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 0.75rem;
+}
+
+/* Hide scrollbar but keep scroll functionality */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Snap scroll for mobile carousels */
+.snap-scroll-x {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.snap-scroll-x > * {
+  scroll-snap-align: start;
+}
+
+/* =============================================
+   EXISTING STYLES (Preserved)
+   ============================================= */
 
 /* Custom scrollbars & map adjustments */
 .leaflet-container {
@@ -32,6 +157,12 @@
   height: 100%;
   z-index: 10;
   border-radius: 0.75rem;
+}
+
+@media (max-width: 639px) {
+  .leaflet-container {
+    border-radius: 0;
+  }
 }
 
 .custom-scrollbar::-webkit-scrollbar {

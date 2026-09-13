@@ -179,7 +179,6 @@ export const INITIAL_KNOWLEDGE_ITEMS: LocalKnowledgeItem[] = [
     communityRating: 4.95,
     ratingCount: 88,
     outdatedReportsCount: 0
-<<<<<<< HEAD
   },
 
   // 8. STAY: Sri Sapthagiri Heritage Residency (Verified)
@@ -292,7 +291,5 @@ export const INITIAL_KNOWLEDGE_ITEMS: LocalKnowledgeItem[] = [
     communityRating: 4.6,
     ratingCount: 22,
     outdatedReportsCount: 3
-=======
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
   }
 ];

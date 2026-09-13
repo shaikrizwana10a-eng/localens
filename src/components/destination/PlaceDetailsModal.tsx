@@ -138,13 +138,14 @@ export const PlaceDetailsModal: React.FC<PlaceDetailsModalProps> = ({
 
   return (
     <>
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 overflow-y-auto animate-in fade-in duration-150">
+      <div className="fixed inset-0 z-50 sm:flex sm:items-center sm:justify-center bg-black/60 backdrop-blur-xs sm:p-4 overflow-y-auto">
         <div 
-          className="bg-white w-full max-w-3xl rounded-3xl shadow-2xl border border-stone-200 overflow-hidden my-8 max-h-[90vh] flex flex-col"
+          className="bg-white w-full sm:max-w-3xl rounded-t-3xl sm:rounded-3xl shadow-2xl border border-stone-200 overflow-hidden sm:my-8 max-h-[95vh] sm:max-h-[90vh] flex flex-col mt-auto sm:mt-0 mobile-bottom-sheet-content sm:!relative sm:!inset-auto sm:!max-h-[90vh] sm:!rounded-3xl"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header Image & Summary */}
-          <div className="relative h-56 sm:h-64 w-full bg-stone-900 shrink-0">
+          <div className="relative h-44 sm:h-56 lg:h-64 w-full bg-stone-900 shrink-0">
+            <div className="sm:hidden absolute top-2 left-1/2 -translate-x-1/2 z-10 w-10 h-1 bg-white/50 rounded-full" />
             <img 
               src={attraction.image} 
               alt={attraction.name}
@@ -154,7 +155,7 @@ export const PlaceDetailsModal: React.FC<PlaceDetailsModalProps> = ({
             
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 p-2 rounded-full bg-black/50 text-white hover:bg-black/75 transition-colors"
+              className="absolute top-4 right-4 p-2 rounded-full bg-black/50 text-white hover:bg-black/75 transition-colors mobile-touch-target"
             >
               <X className="w-5 h-5" />
             </button>

@@ -1,7 +1,6 @@
 import type { TransportRoute } from '../types/travel';
 
 export const DEMO_TRANSPORT_ROUTES: TransportRoute[] = [
-<<<<<<< HEAD
   // Flagship Example from Specification: APSRTC Bus 99 (Gajuwaka -> RK Beach)
   {
     id: 't-route-bus99',
@@ -102,14 +101,11 @@ export const DEMO_TRANSPORT_ROUTES: TransportRoute[] = [
       }
     ]
   },
-=======
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
   {
     id: 't-route-1',
     origin: 'Tirupati Railway Station / Bus Stand',
     destination: 'Tirumala Hill Top (Temple Area)',
     distanceKm: 22,
-<<<<<<< HEAD
     provenance: {
       source_type: 'LOCAL_LENS',
       verification_status: 'VERIFIED',
@@ -118,24 +114,18 @@ export const DEMO_TRANSPORT_ROUTES: TransportRoute[] = [
       last_updated_at: '2026-09-09',
       evidence_available: true
     },
-=======
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
     options: [
       {
         id: 'opt-bus',
         transportType: 'Local Bus',
-<<<<<<< HEAD
         serviceNumber: 'APSRTC Saptagiri Express',
         routeStops: ['Tirupati Central Bus Station', 'Alipiri Toll Gate', 'Ghat Road 2', 'Tirumala CRO Stand'],
-=======
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
         approxFare: '₹70 per seat',
         approxDuration: '45–50 mins',
         boardingPoint: 'Tirupati Central Bus Station (Platform 1–4)',
         dropPoint: 'Tirumala Main Bus Stand (CRO Office)',
         walkingDistance: '200m to Temple Queue Complex',
         transfers: 0,
-<<<<<<< HEAD
         timing: {
           firstBus: '00:00 AM (24x7)',
           lastBus: '11:59 PM (24x7)',
@@ -146,8 +136,6 @@ export const DEMO_TRANSPORT_ROUTES: TransportRoute[] = [
           previous: '₹65',
           updatedAt: '1 Aug 2026'
         },
-=======
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
         steps: [
           { stepNumber: 1, instruction: 'Walk 100m from Railway Exit Gate 1 to Central Bus Station Platform 2.', distanceOrTime: '3 mins walk', iconType: 'walk' },
           { stepNumber: 2, instruction: 'Board APS RTC Saptagiri Express / Electric Bus (Runs every 3-5 mins, 24x7).', distanceOrTime: 'Boarding', iconType: 'bus' },
@@ -161,7 +149,6 @@ export const DEMO_TRANSPORT_ROUTES: TransportRoute[] = [
         ],
         freshnessDaysAgo: 2,
         verifiedCount: 42,
-<<<<<<< HEAD
         confidenceLevel: 'High Confidence',
         provenance: {
           source_type: 'LOCAL_LENS',
@@ -171,9 +158,6 @@ export const DEMO_TRANSPORT_ROUTES: TransportRoute[] = [
           last_updated_at: '2026-09-09',
           evidence_available: true
         }
-=======
-        confidenceLevel: 'High Confidence'
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
       },
       {
         id: 'opt-shared-auto',

@@ -6,7 +6,6 @@ import {
   Landmark, 
   Compass, 
   CheckCircle2,
-<<<<<<< HEAD
   Search
 } from 'lucide-react';
 import type { Destination, Attraction } from '../../types/travel';
@@ -14,14 +13,6 @@ import type { MapMarker } from '../map/TravelMap';
 import { TravelMap } from '../map/TravelMap';
 import { SourceBadge } from '../common/SourceBadge';
 import { PlaceDetailsModal } from './PlaceDetailsModal';
-=======
-  Search,
-  Navigation
-} from 'lucide-react';
-import type { Destination } from '../../types/travel';
-import type { MapMarker } from '../map/TravelMap';
-import { TravelMap } from '../map/TravelMap';
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
 
 interface DestinationViewProps {
   destinations: Destination[];
@@ -40,10 +31,7 @@ export const DestinationView: React.FC<DestinationViewProps> = ({
   const [activeTab, setActiveTab] = useState<'all' | 'attractions' | 'hidden'>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCenter, setActiveCenter] = useState(currentDest.coordinates);
-<<<<<<< HEAD
   const [selectedAttractionModal, setSelectedAttractionModal] = useState<Attraction | null>(null);
-=======
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
 
   const filteredAttractions = currentDest.attractions.filter((a) => {
     const matchesSearch =
@@ -72,7 +60,7 @@ export const DestinationView: React.FC<DestinationViewProps> = ({
     <div className="space-y-10 pb-16">
       
       {/* Destination Switcher Tabs */}
-      <div className="flex items-center space-x-2 border-b border-[#E7E5E4] pb-3 overflow-x-auto custom-scrollbar">
+      <div className="flex items-center space-x-2 border-b border-[#E7E5E4] pb-3 overflow-x-auto scrollbar-none">
         <span className="text-xs font-semibold text-[#57534E] uppercase tracking-wider shrink-0 mr-2">Select Destination:</span>
         {destinations.map((d) => (
           <button
@@ -82,7 +70,7 @@ export const DestinationView: React.FC<DestinationViewProps> = ({
               setActiveCenter(d.coordinates);
               setSearchQuery('');
             }}
-            className={`px-4 py-2 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
+            className={`px-3 sm:px-4 py-2.5 sm:py-2 rounded-lg text-xs font-semibold whitespace-nowrap transition-all mobile-touch-target ${
               d.id === currentDest.id
                 ? 'bg-[#1B4332] text-white shadow-xs'
                 : 'bg-white text-[#57534E] border border-[#E7E5E4] hover:bg-stone-100'
@@ -95,7 +83,7 @@ export const DestinationView: React.FC<DestinationViewProps> = ({
 
       {/* Hero Editorial Banner */}
       <section className="relative rounded-2xl overflow-hidden bg-[#1C1917] text-white border border-stone-800 shadow-md">
-        <div className="relative h-72 sm:h-96 w-full">
+        <div className="relative h-52 sm:h-72 lg:h-96 w-full">
           <img 
             src={currentDest.heroImage} 
             alt={currentDest.name}
@@ -103,7 +91,7 @@ export const DestinationView: React.FC<DestinationViewProps> = ({
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917] via-[#1C1917]/40 to-transparent" />
           
-          <div className="absolute bottom-6 left-6 right-6 max-w-4xl space-y-3">
+          <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 max-w-4xl space-y-2 sm:space-y-3">
             <div className="flex flex-wrap items-center gap-2">
               <span className="bg-[#1B4332] text-emerald-300 px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wide">
                 {currentDest.state}
@@ -113,18 +101,18 @@ export const DestinationView: React.FC<DestinationViewProps> = ({
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
               {currentDest.name}
             </h1>
             
-            <p className="text-stone-200 text-sm sm:text-base leading-relaxed max-w-2xl">
+            <p className="text-stone-200 text-xs sm:text-sm lg:text-base leading-relaxed max-w-2xl">
               {currentDest.tagline}
             </p>
           </div>
         </div>
 
         {/* Quick Stats Bar */}
-        <div className="bg-[#1B4332] px-6 py-4 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs text-white border-t border-emerald-800">
+        <div className="bg-[#1B4332] px-4 sm:px-6 py-3 sm:py-4 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 text-xs text-white border-t border-emerald-800">
           <div>
             <div className="text-emerald-300 font-medium">Average Daily Budget</div>
             <div className="font-bold text-sm mt-0.5">{currentDest.avgDailyBudget}</div>
@@ -234,14 +222,10 @@ export const DestinationView: React.FC<DestinationViewProps> = ({
                 {filteredAttractions.map((a) => (
                   <div 
                     key={a.id} 
-<<<<<<< HEAD
                     onClick={() => {
                       handleSpotClick(a.coordinates);
                       setSelectedAttractionModal(a);
                     }}
-=======
-                    onClick={() => handleSpotClick(a.coordinates)}
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
                     className="bg-white rounded-xl border border-[#E7E5E4] overflow-hidden shadow-xs hover:border-[#1B4332] transition-all cursor-pointer space-y-3 p-4 flex flex-col justify-between group"
                   >
                     <div className="relative h-40 rounded-lg overflow-hidden bg-stone-100">
@@ -251,49 +235,28 @@ export const DestinationView: React.FC<DestinationViewProps> = ({
                           Hidden Gem
                         </span>
                       )}
-<<<<<<< HEAD
                       <div className="absolute top-2 right-2">
                         <SourceBadge sourceType="GOOGLE_MAPS" verificationStatus="PENDING" size="sm" showPopover={false} />
                       </div>
-=======
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
                       <span className="absolute bottom-2 right-2 bg-black/70 text-white px-2 py-0.5 rounded text-[10px] font-semibold backdrop-blur-xs">
                         {a.category}
                       </span>
                     </div>
 
                     <div>
-<<<<<<< HEAD
                       <div className="flex items-center justify-between">
                         <h3 className="font-bold text-[#1C1917] text-base group-hover:text-[#1B4332] transition-colors">
                           {a.name}
                         </h3>
                       </div>
-=======
-                      <h3 className="font-bold text-[#1C1917] text-base group-hover:text-[#1B4332] transition-colors">
-                        {a.name}
-                      </h3>
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
                       <p className="text-xs text-stone-600 mt-1 line-clamp-2">{a.description}</p>
                     </div>
 
                     <div className="pt-2 border-t border-[#E7E5E4] flex items-center justify-between text-[11px] text-stone-600">
                       <div><span className="font-medium">Time:</span> {a.timeRequired}</div>
-<<<<<<< HEAD
                       <span className="text-[#1B4332] font-semibold flex items-center group-hover:underline">
                         View Provenance & Tips →
                       </span>
-=======
-                      <button 
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          onNavigate('transport');
-                        }}
-                        className="text-[#1B4332] font-semibold flex items-center hover:underline"
-                      >
-                        <Navigation className="w-3 h-3 mr-1" /> How to reach →
-                      </button>
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
                     </div>
                   </div>
                 ))}
@@ -376,7 +339,6 @@ export const DestinationView: React.FC<DestinationViewProps> = ({
 
       </div>
 
-<<<<<<< HEAD
       {/* Place Details Modal with Mandatory 5-Source Separation */}
       {selectedAttractionModal && (
         <PlaceDetailsModal
@@ -391,8 +353,6 @@ export const DestinationView: React.FC<DestinationViewProps> = ({
         />
       )}
 
-=======
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
     </div>
   );
 };

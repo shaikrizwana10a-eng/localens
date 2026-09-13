@@ -48,19 +48,21 @@ export const TransportDetailsModal: React.FC<TransportDetailsModalProps> = ({
   return (
     <>
       <div 
-        className="fixed inset-0 z-50 bg-black/75 backdrop-blur-xs flex items-center justify-center p-3 sm:p-5 overflow-y-auto animate-in fade-in duration-200"
+        className="fixed inset-0 z-50 bg-black/75 backdrop-blur-xs sm:flex sm:items-center sm:justify-center sm:p-5 overflow-y-auto"
         onClick={onClose}
       >
         <div 
-          className="bg-white max-w-2xl w-full rounded-3xl shadow-2xl border border-stone-200 overflow-hidden my-6 text-stone-900 relative flex flex-col max-h-[92vh]"
+          className="bg-white w-full sm:max-w-2xl rounded-t-3xl sm:rounded-3xl shadow-2xl border border-stone-200 overflow-hidden text-stone-900 relative flex flex-col max-h-[95vh] sm:max-h-[92vh] sm:my-6 mt-auto sm:mt-0 mobile-bottom-sheet-content sm:!relative sm:!inset-auto sm:!max-h-[92vh] sm:!rounded-3xl"
           onClick={(e) => e.stopPropagation()}
         >
           
           {/* Header Banner */}
-          <div className="bg-[#1C1917] text-white p-6 sm:p-7 relative border-b border-stone-800 shrink-0">
+          <div className="bg-[#1C1917] text-white p-4 sm:p-6 lg:p-7 relative border-b border-stone-800 shrink-0">
+            {/* Drag Handle for mobile bottom-sheet */}
+            <div className="sm:hidden w-10 h-1 bg-stone-600 rounded-full mx-auto mb-3" />
             <button 
               onClick={onClose}
-              className="absolute top-5 right-5 p-2 rounded-full text-stone-400 hover:text-white hover:bg-stone-800 transition-colors cursor-pointer"
+              className="absolute top-4 sm:top-5 right-4 sm:right-5 p-2 rounded-full text-stone-400 hover:text-white hover:bg-stone-800 transition-colors cursor-pointer mobile-touch-target"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />

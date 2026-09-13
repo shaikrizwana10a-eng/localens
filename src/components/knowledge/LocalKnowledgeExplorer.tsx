@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import { 
   Search, 
-<<<<<<< HEAD
-=======
-  Bus, 
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
   Clock, 
   AlertTriangle, 
   Star, 
@@ -12,26 +8,16 @@ import {
   Users, 
   DollarSign, 
   CheckCircle2, 
-<<<<<<< HEAD
   HelpCircle, 
   Share2, 
   Sparkles, 
   Lightbulb 
-=======
-  HelpCircle,
-  Share2,
-  Sparkles,
-  Lightbulb
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
 } from 'lucide-react';
 import { useLocalKnowledge } from '../../context/LocalKnowledgeContext';
 import { composeRouteIntelligence } from '../../utils/routeComposer';
 import { RouteIntelligenceCard } from './RouteIntelligenceCard';
-<<<<<<< HEAD
 import { SourceBadge } from '../common/SourceBadge';
 import { OutdatedReportModal } from './OutdatedReportModal';
-=======
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
 
 interface LocalKnowledgeExplorerProps {
   initialSearchQuery?: string;
@@ -42,11 +28,7 @@ export const LocalKnowledgeExplorer: React.FC<LocalKnowledgeExplorerProps> = ({
   initialSearchQuery = '',
   onNavigateToShare
 }) => {
-<<<<<<< HEAD
   const { items, rateItem, submitOutdatedReport } = useLocalKnowledge();
-=======
-  const { items, rateItem, reportOutdated } = useLocalKnowledge();
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
   const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
   const [selectedStatus, setSelectedStatus] = useState<string>('ALL');
@@ -54,7 +36,6 @@ export const LocalKnowledgeExplorer: React.FC<LocalKnowledgeExplorerProps> = ({
   // Rating input state per item
   const [userRatings, setUserRatings] = useState<Record<string, number>>({});
   const [ratedFeedbackMessage, setRatedFeedbackMessage] = useState<Record<string, string>>({});
-<<<<<<< HEAD
   const [activeOutdatedItem, setActiveOutdatedItem] = useState<{ id: string; title: string } | null>(null);
 
   const categories: { label: string; value: string }[] = [
@@ -64,17 +45,6 @@ export const LocalKnowledgeExplorer: React.FC<LocalKnowledgeExplorerProps> = ({
     { label: '🍴 Food', value: 'Food' },
     { label: '📍 Destinations', value: 'Destination' },
     { label: '💡 Secret Hacks', value: 'Tip' }
-=======
-  const [outdatedFeedbackMessage, setOutdatedFeedbackMessage] = useState<Record<string, string>>({});
-
-  const categories: { label: string; value: string }[] = [
-    { label: 'All Knowledge', value: 'ALL' },
-    { label: 'Bus Routes', value: 'Bus' },
-    { label: 'Auto Fares', value: 'Auto' },
-    { label: 'Stays', value: 'Stay' },
-    { label: 'Experiences', value: 'Experience' },
-    { label: 'Local Tips', value: 'Tip' }
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
   ];
 
   const statuses: { label: string; value: string; badge: string }[] = [
@@ -84,20 +54,6 @@ export const LocalKnowledgeExplorer: React.FC<LocalKnowledgeExplorerProps> = ({
     { label: 'Outdated / Re-check', value: 'OUTDATED', badge: 'bg-rose-100 text-rose-900 border border-rose-300' }
   ];
 
-<<<<<<< HEAD
-=======
-  const handleReportOutdatedSubmit = (itemId: string) => {
-    reportOutdated(itemId);
-    setOutdatedFeedbackMessage((prev) => ({
-      ...prev,
-      [itemId]: 'Flagged as outdated. Sent to platform re-verification queue!'
-    }));
-    setTimeout(() => {
-      setOutdatedFeedbackMessage((prev) => ({ ...prev, [itemId]: '' }));
-    }, 4000);
-  };
-
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
   // Helper to parse origin & destination from search string
   const getParsedSearchRoute = () => {
     if (!searchQuery.trim()) return null;
@@ -128,7 +84,6 @@ export const LocalKnowledgeExplorer: React.FC<LocalKnowledgeExplorerProps> = ({
     ? composeRouteIntelligence(parsedRoute.origin, parsedRoute.dest, items)
     : null;
 
-<<<<<<< HEAD
   // Filter items across all entities (Destination, Transport, Stay, Food)
   const filteredItems = items.filter((item) => {
     const q = searchQuery.toLowerCase().trim();
@@ -150,19 +105,6 @@ export const LocalKnowledgeExplorer: React.FC<LocalKnowledgeExplorerProps> = ({
       (selectedCategory === 'Transport' && (item.category === 'Bus' || item.category === 'Auto')) ||
       (selectedCategory === 'Destination' && (item.category === 'Experience' || item.category === 'Tip'));
 
-=======
-  // Filter items
-  const filteredItems = items.filter((item) => {
-    const matchesSearch =
-      !searchQuery.trim() ||
-      item.from.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.to.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (item.busNumber && item.busNumber.toLowerCase().includes(searchQuery.toLowerCase())) ||
-      (item.boardingPoint && item.boardingPoint.toLowerCase().includes(searchQuery.toLowerCase())) ||
-      (item.additionalInfo && item.additionalInfo.toLowerCase().includes(searchQuery.toLowerCase()));
-
-    const matchesCategory = selectedCategory === 'ALL' || item.category === selectedCategory;
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
     const matchesStatus = selectedStatus === 'ALL' || item.status === selectedStatus;
 
     return matchesSearch && matchesCategory && matchesStatus;
@@ -342,7 +284,6 @@ export const LocalKnowledgeExplorer: React.FC<LocalKnowledgeExplorerProps> = ({
                 : 'border-rose-300 bg-rose-50/20'
             }`}
           >
-<<<<<<< HEAD
             {/* Top Status Header with Standardized SourceBadge */}
             <div className="px-5 py-2.5 flex items-center justify-between border-b border-stone-100 bg-[#FAF9F6]">
               <div className="flex items-center space-x-2">
@@ -356,36 +297,6 @@ export const LocalKnowledgeExplorer: React.FC<LocalKnowledgeExplorerProps> = ({
               </div>
 
               <span className="text-[11px] font-bold text-stone-500 bg-stone-100 px-2 py-0.5 rounded">
-=======
-            {/* Top Status Header */}
-            <div className={`px-5 py-2.5 flex items-center justify-between border-b text-xs font-semibold ${
-              item.status === 'VERIFIED'
-                ? 'bg-emerald-50 text-emerald-950 border-emerald-100'
-                : item.status === 'PENDING'
-                ? 'bg-amber-100 text-amber-950 border-amber-200'
-                : 'bg-rose-100 text-rose-950 border-rose-200'
-            }`}>
-              <div className="flex items-center space-x-1.5">
-                {item.status === 'VERIFIED' ? (
-                  <>
-                    <CheckCircle2 className="w-4 h-4 text-emerald-700" />
-                    <span className="font-extrabold uppercase tracking-wide">Verified by Platform</span>
-                  </>
-                ) : item.status === 'PENDING' ? (
-                  <>
-                    <Clock className="w-4 h-4 text-amber-700 animate-spin-slow" />
-                    <span className="font-extrabold uppercase tracking-wide">Pending Verification</span>
-                  </>
-                ) : (
-                  <>
-                    <AlertTriangle className="w-4 h-4 text-rose-700" />
-                    <span className="font-extrabold uppercase tracking-wide">Outdated / Needs Re-Verification</span>
-                  </>
-                )}
-              </div>
-
-              <span className="text-[11px] opacity-80">
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
                 {item.category}
               </span>
             </div>
@@ -393,7 +304,6 @@ export const LocalKnowledgeExplorer: React.FC<LocalKnowledgeExplorerProps> = ({
             {/* Main Content Body */}
             <div className="p-5 space-y-4 flex-1">
               
-<<<<<<< HEAD
               {/* Entity Heading */}
               <div className="space-y-1">
                 <div className="flex items-center space-x-2 text-xs font-bold text-stone-500 uppercase tracking-wider">
@@ -422,27 +332,6 @@ export const LocalKnowledgeExplorer: React.FC<LocalKnowledgeExplorerProps> = ({
                     </span>
                     <span className="font-extrabold text-stone-900 text-sm flex items-center">
                       {item.stayType || item.cuisine || (item.busNumber ? `Bus ${item.busNumber}` : 'Local Transit')}
-=======
-              {/* Route Heading */}
-              <div className="space-y-1">
-                <div className="flex items-center space-x-2 text-xs font-bold text-stone-500 uppercase tracking-wider">
-                  <MapPin className="w-3.5 h-3.5 text-[#1B4332]" />
-                  <span>Route</span>
-                </div>
-                <h4 className="text-xl font-extrabold text-[#1C1917]">
-                  {item.from} <span className="text-emerald-700 mx-1">→</span> {item.to}
-                </h4>
-              </div>
-
-              {/* Data Grid: Bus, Fare, Boarding Point */}
-              <div className="grid grid-cols-2 gap-3 text-xs bg-stone-50 p-3.5 rounded-xl border border-stone-200">
-                {item.busNumber && (
-                  <div className="space-y-0.5">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block">Bus Number</span>
-                    <span className="font-extrabold text-stone-900 text-sm flex items-center">
-                      <Bus className="w-4 h-4 text-[#1B4332] mr-1.5" />
-                      Bus {item.busNumber}
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
                     </span>
                   </div>
                 )}
@@ -450,11 +339,7 @@ export const LocalKnowledgeExplorer: React.FC<LocalKnowledgeExplorerProps> = ({
                 {item.fare && (
                   <div className="space-y-0.5">
                     <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block">
-<<<<<<< HEAD
                       {item.status === 'VERIFIED' ? 'Verified Tariff' : 'Reported Rate'}
-=======
-                      {item.status === 'VERIFIED' ? 'Verified Bus Fare' : 'Reported Fare'}
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
                     </span>
                     <span className="font-extrabold text-emerald-800 text-sm flex items-center">
                       <DollarSign className="w-4 h-4 text-emerald-600 mr-0.5" />
@@ -463,7 +348,6 @@ export const LocalKnowledgeExplorer: React.FC<LocalKnowledgeExplorerProps> = ({
                   </div>
                 )}
 
-<<<<<<< HEAD
                 {(item.autoFare || item.popularDish) && (
                   <div className="space-y-0.5 col-span-2 sm:col-span-1">
                     <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block">
@@ -471,18 +355,10 @@ export const LocalKnowledgeExplorer: React.FC<LocalKnowledgeExplorerProps> = ({
                     </span>
                     <span className="font-semibold text-stone-800">
                       {item.popularDish || item.autoFare}
-=======
-                {item.autoFare && (
-                  <div className="space-y-0.5 col-span-2 sm:col-span-1">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block">Auto Fare</span>
-                    <span className="font-semibold text-stone-800">
-                      {item.autoFare}
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
                     </span>
                   </div>
                 )}
 
-<<<<<<< HEAD
                 {(item.boardingPoint || item.amenities) && (
                   <div className="space-y-0.5 col-span-2 sm:col-span-1">
                     <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block">
@@ -491,14 +367,6 @@ export const LocalKnowledgeExplorer: React.FC<LocalKnowledgeExplorerProps> = ({
                     <span className="font-semibold text-stone-800 truncate flex items-center" title={item.amenities || item.boardingPoint}>
                       <MapPin className="w-3.5 h-3.5 text-stone-500 mr-1 shrink-0" />
                       {item.amenities || item.boardingPoint}
-=======
-                {item.boardingPoint && (
-                  <div className="space-y-0.5 col-span-2 sm:col-span-1">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block">Where to board</span>
-                    <span className="font-semibold text-stone-800 truncate flex items-center" title={item.boardingPoint}>
-                      <MapPin className="w-3.5 h-3.5 text-stone-500 mr-1 shrink-0" />
-                      {item.boardingPoint}
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
                     </span>
                   </div>
                 )}
@@ -606,7 +474,6 @@ export const LocalKnowledgeExplorer: React.FC<LocalKnowledgeExplorerProps> = ({
                 </div>
               )}
 
-<<<<<<< HEAD
               {/* Outdated Reporting Action */}
               <div className="flex justify-end pt-1">
                 <button
@@ -616,34 +483,13 @@ export const LocalKnowledgeExplorer: React.FC<LocalKnowledgeExplorerProps> = ({
                     item.status === 'OUTDATED'
                       ? 'text-stone-400 cursor-not-allowed'
                       : 'text-red-700 hover:text-red-900 hover:underline'
-=======
-              {outdatedFeedbackMessage[item.id] && (
-                <div className="text-[11px] text-rose-800 font-bold bg-rose-100 p-1.5 rounded text-center animate-fade-in">
-                  {outdatedFeedbackMessage[item.id]}
-                </div>
-              )}
-
-              {/* Outdated Reporting Action */}
-              <div className="flex justify-end pt-1">
-                <button
-                  onClick={() => handleReportOutdatedSubmit(item.id)}
-                  disabled={item.status === 'OUTDATED'}
-                  className={`text-[11px] font-semibold flex items-center space-x-1 transition-colors ${
-                    item.status === 'OUTDATED'
-                      ? 'text-stone-400 cursor-not-allowed'
-                      : 'text-rose-700 hover:text-rose-900 hover:underline'
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
                   }`}
                 >
                   <AlertTriangle className="w-3 h-3" />
                   <span>
                     {item.status === 'OUTDATED'
                       ? 'Re-verification Requested'
-<<<<<<< HEAD
                       : 'Report Outdated Information'}
-=======
-                      : 'This information may be outdated'}
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
                   </span>
                 </button>
               </div>
@@ -654,7 +500,6 @@ export const LocalKnowledgeExplorer: React.FC<LocalKnowledgeExplorerProps> = ({
         ))}
       </div>
 
-<<<<<<< HEAD
       {/* Outdated Report Modal */}
       {activeOutdatedItem && (
         <OutdatedReportModal
@@ -673,8 +518,6 @@ export const LocalKnowledgeExplorer: React.FC<LocalKnowledgeExplorerProps> = ({
         />
       )}
 
-=======
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
     </div>
   );
 };

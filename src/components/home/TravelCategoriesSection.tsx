@@ -45,15 +45,15 @@ export const TravelCategoriesSection: React.FC<TravelCategoriesSectionProps> = (
   ];
 
   return (
-    <section className="bg-[#FAF9F6] rounded-3xl border border-[#E7E5E4] p-6 sm:p-8 space-y-6">
+    <section className="bg-[#FAF9F6] rounded-2xl sm:rounded-3xl border border-[#E7E5E4] p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-6">
       
       {/* Section Header */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#E7E5E4] pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 border-b border-[#E7E5E4] pb-3 sm:pb-4">
         <div>
           <span className="bg-emerald-100 text-[#1B4332] font-black text-[10px] uppercase px-2.5 py-0.5 rounded border border-emerald-300 tracking-wider">
             Comprehensive Directory
           </span>
-          <h2 className="text-2xl sm:text-3xl font-black text-[#1C1917] mt-1.5">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-[#1C1917] mt-1.5">
             Everything You Need for the Journey
           </h2>
           <p className="text-xs text-stone-500 font-medium mt-0.5">
@@ -78,7 +78,7 @@ export const TravelCategoriesSection: React.FC<TravelCategoriesSectionProps> = (
             key={t.id}
             type="button"
             onClick={() => setActiveTab(t.id)}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 shrink-0 border ${
+            className={`px-3 sm:px-4 py-2.5 sm:py-2 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 shrink-0 border mobile-touch-target ${
               activeTab === t.id
                 ? 'bg-[#1B4332] text-white border-[#1B4332] shadow-xs'
                 : 'bg-white text-stone-600 hover:text-stone-900 border-[#E7E5E4] hover:bg-stone-50'

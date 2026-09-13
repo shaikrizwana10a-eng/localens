@@ -46,11 +46,8 @@ export interface Destination {
   communityObservations: string[];
 }
 
-<<<<<<< HEAD
 import type { DataProvenance } from './provenance';
 
-=======
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
 export interface TransportStep {
   stepNumber: number;
   instruction: string;
@@ -60,13 +57,9 @@ export interface TransportStep {
 
 export interface TransportOption {
   id: string;
-<<<<<<< HEAD
   transportType: 'Local Bus' | 'Shared Auto' | 'Bus + Walk' | 'Private Cab' | 'Train' | 'Metro' | 'Rental' | 'Other';
   serviceNumber?: string; // e.g. "APSRTC Bus 99"
   routeStops?: string[]; // e.g. ["Gajuwaka", "NAD Junction", "Maddilapalem", "RK Beach"]
-=======
-  transportType: 'Local Bus' | 'Shared Auto' | 'Bus + Walk' | 'Private Cab';
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
   approxFare: string;
   approxDuration: string;
   boardingPoint: string;
@@ -79,7 +72,6 @@ export interface TransportOption {
   verifiedCount: number;
   confidenceLevel: ConfidenceLevel;
   routePolyline?: Coordinates[];
-<<<<<<< HEAD
   timing?: {
     firstBus?: string;
     lastBus?: string;
@@ -91,8 +83,6 @@ export interface TransportOption {
     updatedAt: string;
   };
   provenance?: DataProvenance;
-=======
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
 }
 
 export interface TransportRoute {
@@ -101,27 +91,17 @@ export interface TransportRoute {
   destination: string;
   distanceKm: number;
   options: TransportOption[];
-<<<<<<< HEAD
   provenance?: DataProvenance;
-=======
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
 }
 
 export interface Accommodation {
   id: string;
   name: string;
-<<<<<<< HEAD
   type: 'Budget Hotel' | 'Homestay' | 'Dharamshala' | 'Boutique Stay' | 'Resort' | 'Hostel';
   destinationId: string;
   address: string;
   pricePerNight: number;
   priceRange?: string;
-=======
-  type: 'Budget Hotel' | 'Homestay' | 'Dharamshala' | 'Boutique Stay';
-  destinationId: string;
-  address: string;
-  pricePerNight: number;
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
   rating: number;
   confidenceLevel: ConfidenceLevel;
   cleanlinessScore: string;
@@ -136,12 +116,9 @@ export interface Accommodation {
   coordinates: Coordinates;
   verifiedCount: number;
   isPartner?: boolean;
-<<<<<<< HEAD
   contactNumber?: string;
   roomTypes?: string[];
   provenance?: DataProvenance;
-=======
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
 }
 
 export interface FoodItem {
@@ -158,7 +135,6 @@ export interface FoodItem {
   verifiedCount: number;
   confidenceLevel: ConfidenceLevel;
   isPartner?: boolean;
-<<<<<<< HEAD
   address?: string;
   openingHours?: string;
   popularDishes?: string[];
@@ -166,8 +142,6 @@ export interface FoodItem {
   parkingAvailable?: boolean;
   paymentOptions?: string[];
   provenance?: DataProvenance;
-=======
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
 }
 
 export interface VideoReview {
@@ -249,10 +223,7 @@ export interface ItineraryActivity {
   activityDescription: string;
   foodOption: string;
   costBreakdown: string;
-<<<<<<< HEAD
   aiBadge?: string;
-=======
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
 }
 
 export interface DayItinerary {
@@ -264,10 +235,7 @@ export interface DayItinerary {
   suggestedStay: string;
   stayCost: number;
   dailyTotalSpent: number;
-<<<<<<< HEAD
   aiLocalTip?: string;
-=======
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
 }
 
 export interface GeneratedItinerary {
@@ -277,12 +245,8 @@ export interface GeneratedItinerary {
   totalEstimatedCost: number;
   whyThisPlan: string[];
   days: DayItinerary[];
-<<<<<<< HEAD
   aiPromptUsed?: string;
   aiOptimizationScore?: number;
   aiModeActive?: boolean;
 }
 
-=======
-}
->>>>>>> 76d01077d216a088f5329117e7a7a53bc5c10c04
