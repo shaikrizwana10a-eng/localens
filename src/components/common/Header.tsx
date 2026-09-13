@@ -12,8 +12,7 @@ import {
   Search,
   X,
   Menu,
-  Sparkles,
-  ChevronDown
+  Sparkles
 } from 'lucide-react';
 import type { UserRole } from '../../types/travel';
 import { useAuth } from '../../context/AuthContext';
@@ -37,7 +36,6 @@ export const Header: React.FC<HeaderProps> = ({
   const { profile } = useAuth();
   const [showGuideModal, setShowGuideModal] = useState(false);
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
-  const [roleDropdownOpen, setRoleDropdownOpen] = useState(false);
 
   const roles: { role: UserRole; label: string; icon: React.ReactNode; desc: string }[] = [
     { role: 'tourist', label: 'Traveller', icon: <Compass className="w-3.5 h-3.5" />, desc: 'Explore & Plan' },
@@ -45,8 +43,6 @@ export const Header: React.FC<HeaderProps> = ({
     { role: 'business', label: 'Business Owner', icon: <Building2 className="w-3.5 h-3.5" />, desc: 'Insights & Reach' },
     { role: 'foreign_tourist', label: 'Foreign Tourist', icon: <Globe2 className="w-3.5 h-3.5" />, desc: 'Safety & Guides' }
   ];
-
-  const currentRoleObj = roles.find(r => r.role === userRole) || roles[0];
 
   const navItems = [
     { id: 'explore-knowledge', label: 'Explore', view: 'explore-knowledge' },
